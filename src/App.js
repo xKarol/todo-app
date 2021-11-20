@@ -4,10 +4,8 @@ import Container from "./components/Container.js";
 function App() {
   return (
     <>
-      <Background>
-        
-      </Background>
-      <Container></Container>
+      <Background />
+      <Container />
     </>
   );
 }
