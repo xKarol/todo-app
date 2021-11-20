@@ -1,0 +1,18 @@
+.background {
+  background-color: $very-light-gray;
+  width: 100vw;
+  height: 100vh;
+  &::before {
+    content: "";
+    position: absolute;
+    background-image: url("./images/bg-mobile-light.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 200px;
+    background-color: #eee;
+    @include breakpoint-up(medium) {
+      background-image: url("./images/bg-desktop-light.jpg");
+    }
+  }
+}

@@ -18,4 +18,27 @@ a {
   text-decoration: none;
   color: black;
 }
+
+.background {
+  background-color: #fafafa;
+  width: 100vw;
+  height: 100vh;
+}
+
+.background::before {
+  content: "";
+  position: absolute;
+  background-image: url("./images/bg-mobile-light.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: 200px;
+  background-color: #eee;
+}
+
+@media (min-width: 640px) {
+  .background::before {
+    background-image: url("./images/bg-desktop-light.jpg");
+  }
+}
 /*# sourceMappingURL=main.css.map */
