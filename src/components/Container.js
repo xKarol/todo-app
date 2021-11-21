@@ -1,16 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { MoonIcon, SunIcon } from "./Icons.js";
 import TodoItem from "./TodoItem.js";
 import { TodoContext } from "./Provider.js";
+import { db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 function Container({ theme, setTheme }) {
   const [todos, setTodo] = useContext(TodoContext);
   const [todoName, setTodoName] = useState("");
   const [filter, setFilter] = useState(1);
-  console.log(todos);
+  const todosCollectionRef = collection(db, "todos");
+
   const addTodo = (e) => {
     e.preventDefault();
-    setTodo((data) => [...data, { text: todoName, completed: false }]);
+    setTodo((data) => [
+      { id: Date.now(), text: todoName, completed: false },
+      ...data,
+    ]);
     setTodoName("");
   };
 
@@ -18,6 +24,14 @@ function Container({ theme, setTheme }) {
     const newList = todos.filter((data) => !data.completed);
     setTodo(newList);
   };
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getDocs(todosCollectionRef);
+      setTodo(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getData();
+  }, []);
 
   return (
     <>
