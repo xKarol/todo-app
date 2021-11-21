@@ -64,7 +64,10 @@ function Container({ theme, setTheme }) {
       <section className="container">
         <header className="container__header">
           <span className="container__logo">TODO</span>
-          <span onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+          <span
+            className="container__theme"
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+          >
             {theme === "light" ? <MoonIcon /> : <SunIcon />}
           </span>
         </header>

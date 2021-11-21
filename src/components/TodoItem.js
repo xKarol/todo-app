@@ -37,7 +37,7 @@ const TodoItem = ({ completed, text, id }) => {
         <h1 className={`container__list__text ${completed ? "completed" : ""}`}>
           {text}
         </h1>
-        <span onClick={() => deleteTodo(id)}>
+        <span className="container__list__delete" onClick={() => deleteTodo(id)}>
           <CrossIcon />
         </span>
       </li>

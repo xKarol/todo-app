@@ -6,6 +6,10 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  @include breakpoint-up(large) {
+    padding: 0 $desktop-margin;
+    padding-top: 50px;
+  }
   &__header {
     display: flex;
     justify-content: space-between;
@@ -69,6 +73,7 @@
     list-style: none;
     border-radius: 5px;
     margin-bottom: 15px;
+    box-shadow: 0 0 50px 1px rgba(0, 0, 0, 0.1);
     overflow-y: scroll;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
@@ -103,10 +108,21 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px;
+
       > span {
         color: $dark-grayish-blue;
         font-size: 14px;
-        cursor: pointer;
+        user-select: none;
+        &:nth-child(2) {
+          cursor: pointer;
+          transition: color 0.1s ease-in-out;
+          &:hover {
+            color: $very-dark-grayish-blue;
+          }
+        }
+        @include breakpoint-up(medium) {
+          font-size: 12px;
+        }
       }
     }
     &__confirm {
@@ -127,6 +143,9 @@
         pointer-events: none;
       }
     }
+    &__delete {
+      cursor: pointer;
+    }
   }
   &__sort {
     width: 100%;
@@ -136,12 +155,25 @@
     background-color: $white;
     border-radius: 5px;
     padding: 20px;
+    @include breakpoint-up(medium) {
+      width: max-content;
+      background-color: transparent;
+      margin-top: -67px;
+      height: 52px;
+      z-index: 1;
+    }
     > span {
       color: $dark-grayish-blue;
       font-weight: 700;
       padding: 0 15px;
       cursor: pointer;
-      transition: color 0.2s ease-in-out;
+      transition: color 0.1s ease-in-out;
+      &:hover {
+        color: $very-dark-grayish-blue;
+      }
+      @include breakpoint-up(medium) {
+        font-size: 14px;
+      }
       &.active {
         color: $bright-blue;
       }
@@ -166,6 +198,12 @@
     outline: none;
     appearance: none;
     position: relative;
+    cursor: pointer;
+    &:hover {
+      &::before {
+        border-color: $bright-blue;
+      }
+    }
     &::before {
       content: "";
       position: absolute;
@@ -186,5 +224,8 @@
         );
       }
     }
+  }
+  &__theme {
+    cursor: pointer;
   }
 }

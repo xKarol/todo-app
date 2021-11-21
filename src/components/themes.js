@@ -6,6 +6,7 @@ export const darkTheme = {
   background: "hsl(235, 24%, 19%)",
   font: "hsl(234, 39%, 85%)",
   fontDark: "hsl(233, 14%, 35%)",
+  fontLight: "hsl(236, 33%, 92%)",
   border: "hsl(237, 14%, 26%)",
 
   // - Very Dark Blue: hsl(235, 21%, 11%)
@@ -41,6 +42,13 @@ export const GlobalStyles = createGlobalStyle`
             }
             &__info{
                 background-color: ${(props) => props.theme.background};
+                > span{
+                    &:nth-child(2) {
+                        &:hover {
+                            color: ${(props) => props.theme.fontLight};
+                        }
+                    }
+                }
             }
         }
         &__confirm{
@@ -50,6 +58,11 @@ export const GlobalStyles = createGlobalStyle`
         }
         &__sort{
             background-color: ${(props) => props.theme.background};
+            > span{
+                &:hover {
+                    color: ${(props) => props.theme.fontLight};
+                }
+            }
         }
         &__input{
             > input[type="text"]{

@@ -80,6 +80,13 @@ a {
           flex-direction: column;
 }
 
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 30vw;
+    padding-top: 50px;
+  }
+}
+
 .container__header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -185,6 +192,8 @@ a {
   list-style: none;
   border-radius: 5px;
   margin-bottom: 15px;
+  -webkit-box-shadow: 0 0 50px 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 50px 1px rgba(0, 0, 0, 0.1);
   overflow-y: scroll;
   -ms-overflow-style: none;
   /* IE and Edge */
@@ -247,7 +256,26 @@ a {
 .container__list__info > span {
   color: #9394a5;
   font-size: 14px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.container__list__info > span:nth-child(2) {
   cursor: pointer;
+  -webkit-transition: color 0.1s ease-in-out;
+  transition: color 0.1s ease-in-out;
+}
+
+.container__list__info > span:nth-child(2):hover {
+  color: #484b6a;
+}
+
+@media (min-width: 640px) {
+  .container__list__info > span {
+    font-size: 12px;
+  }
 }
 
 .container__list__confirm {
@@ -272,6 +300,10 @@ a {
   pointer-events: none;
 }
 
+.container__list__delete {
+  cursor: pointer;
+}
+
 .container__sort {
   width: 100%;
   display: -webkit-box;
@@ -288,13 +320,35 @@ a {
   padding: 20px;
 }
 
+@media (min-width: 640px) {
+  .container__sort {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    background-color: transparent;
+    margin-top: -67px;
+    height: 52px;
+    z-index: 1;
+  }
+}
+
 .container__sort > span {
   color: #9394a5;
   font-weight: 700;
   padding: 0 15px;
   cursor: pointer;
-  -webkit-transition: color 0.2s ease-in-out;
-  transition: color 0.2s ease-in-out;
+  -webkit-transition: color 0.1s ease-in-out;
+  transition: color 0.1s ease-in-out;
+}
+
+.container__sort > span:hover {
+  color: #484b6a;
+}
+
+@media (min-width: 640px) {
+  .container__sort > span {
+    font-size: 14px;
+  }
 }
 
 .container__sort > span.active {
@@ -330,6 +384,11 @@ a {
      -moz-appearance: none;
           appearance: none;
   position: relative;
+  cursor: pointer;
+}
+
+.container__confirm:hover::before {
+  border-color: #3a7bfd;
 }
 
 .container__confirm::before {
@@ -349,5 +408,9 @@ a {
 .container__confirm:checked::before {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#57ddff), to(#c058f3));
   background-image: linear-gradient(#57ddff, #c058f3);
+}
+
+.container__theme {
+  cursor: pointer;
 }
 /*# sourceMappingURL=main.css.map */
