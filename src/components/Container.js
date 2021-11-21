@@ -3,7 +3,15 @@ import { MoonIcon, SunIcon } from "./Icons.js";
 import TodoItem from "./TodoItem.js";
 import { TodoContext } from "./Provider.js";
 import { db } from "../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  query,
+  where,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 
 function Container({ theme, setTheme }) {
   const [todos, setTodo] = useContext(TodoContext);
@@ -11,16 +19,34 @@ function Container({ theme, setTheme }) {
   const [filter, setFilter] = useState(1);
   const todosCollectionRef = collection(db, "todos");
 
-  const addTodo = (e) => {
+  const addTodo = async (e) => {
     e.preventDefault();
-    setTodo((data) => [
-      { id: Date.now(), text: todoName, completed: false },
-      ...data,
-    ]);
-    setTodoName("");
+
+    const databaseAdd = async () => {
+      const item = await addDoc(todosCollectionRef, {
+        text: todoName,
+        completed: false,
+      });
+      setTodo((data) => [
+        { id: item.id, text: todoName, completed: false },
+        ...data,
+      ]);
+    };
+    if (todoName) {
+      databaseAdd();
+      setTodoName("");
+    }
   };
 
-  const clearCompleted = () => {
+  const clearCompleted = async () => {
+    const todosRef = collection(db, "todos");
+    const q = query(todosRef, where("completed", "==", true));
+    const snapshot = await getDocs(q);
+    const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    results.forEach(async (result) => {
+      const docRef = doc(db, "todos", result.id);
+      await deleteDoc(docRef);
+    });
     const newList = todos.filter((data) => !data.completed);
     setTodo(newList);
   };
@@ -63,7 +89,6 @@ function Container({ theme, setTheme }) {
             .map(({ text, completed, id }) => (
               <TodoItem text={text} completed={completed} id={id} key={id} />
             ))}
-
           <div className="container__list__info">
             <span>
               {todos.filter((data) => !data.completed).length} items left
