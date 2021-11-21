@@ -1,6 +1,9 @@
 import React from "react";
 import { CrossIcon, CheckIcon } from "./Icons.js";
 const TodoItem = ({ completed, text }) => {
+  const completeTodo = () => {
+    
+  }
   return (
     <>
       <li>
@@ -10,6 +13,7 @@ const TodoItem = ({ completed, text }) => {
             type="checkbox"
             className="container__confirm"
             checked={completed}
+            onChange={completeTodo}
           />
         </div>
         <h1 className="container__list__text">{text}</h1>

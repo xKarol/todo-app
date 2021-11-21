@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { MoonIcon } from "./Icons.js";
 import TodoItem from "./TodoItem.js";
+import { TodoContext } from "./Provider.js";
+
 function Container() {
+  const [todos, setTodo] = useContext(TodoContext);
+  const [todoName, setTodoName] = useState("");
+  console.log(todos);
+  const addTodo = (e) => {
+    e.preventDefault();
+    setTodo((data) => [...data, { text: todoName, completed: false }]);
+  };
+
+  const clearCompleted = () => {
+    const newList = todos.filter((data) => !data.completed);
+    setTodo(newList);
+  };
+
   return (
     <>
       <section className="container">
@@ -9,18 +24,25 @@ function Container() {
           <span className="container__logo">TODO</span>
           <MoonIcon />
         </header>
-        <div className="container__input">
-          <input type="checkbox" />
-          <input type="text" placeholder="Create a new todo..." />
-        </div>
+        <form className="container__input" onSubmit={(e) => addTodo(e)}>
+          <input type="checkbox" disabled />
+          <input
+            type="text"
+            placeholder="Create a new todo..."
+            value={todoName}
+            onChange={(e) => setTodoName(e.target.value)}
+          />
+        </form>
         <ul className="container__list">
-          <TodoItem completed={false} text="Jog around" />
-          <TodoItem completed={true} text="Take a walk" />
-          <TodoItem completed={true} text="Jog around" />
+          {todos.map((data, index) => (
+            <TodoItem text={data.text} completed={data.completed} key={index} />
+          ))}
 
           <div className="container__list__info">
-            <span>5 items left</span>
-            <span>Clear Completed</span>
+            <span>
+              {todos.filter((data) => !data.completed).length} items left
+            </span>
+            <span onClick={clearCompleted}>Clear Completed</span>
           </div>
         </ul>
         <div className="container__sort">
