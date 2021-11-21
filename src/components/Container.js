@@ -6,6 +6,7 @@ import { TodoContext } from "./Provider.js";
 function Container() {
   const [todos, setTodo] = useContext(TodoContext);
   const [todoName, setTodoName] = useState("");
+  const [filter, setFilter] = useState(1);
   console.log(todos);
   const addTodo = (e) => {
     e.preventDefault();
@@ -34,9 +35,21 @@ function Container() {
           />
         </form>
         <ul className="container__list">
-          {todos.map((data, index) => (
-            <TodoItem text={data.text} completed={data.completed} key={index} />
-          ))}
+          {todos
+            .filter((data) =>
+              filter === 1
+                ? data
+                : filter === 2
+                ? !data.completed
+                : data.completed
+            )
+            .map((data, index) => (
+              <TodoItem
+                text={data.text}
+                completed={data.completed}
+                key={index}
+              />
+            ))}
 
           <div className="container__list__info">
             <span>
@@ -46,9 +59,24 @@ function Container() {
           </div>
         </ul>
         <div className="container__sort">
-          <span>All</span>
-          <span>Active</span>
-          <span>Completed</span>
+          <span
+            className={filter === 1 ? "active" : undefined}
+            onClick={() => setFilter(1)}
+          >
+            All
+          </span>
+          <span
+            className={filter === 2 ? "active" : undefined}
+            onClick={() => setFilter(2)}
+          >
+            Active
+          </span>
+          <span
+            className={filter === 3 ? "active" : undefined}
+            onClick={() => setFilter(3)}
+          >
+            Completed
+          </span>
         </div>
         <div className="container__dragInfo">
           <span>Drag and drop to reorder list</span>

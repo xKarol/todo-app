@@ -122,6 +122,10 @@
       font-weight: 700;
       padding: 0 15px;
       cursor: pointer;
+      transition: color 0.2s ease-in-out;
+      &.active {
+        color: $bright-blue;
+      }
     }
   }
   &__dragInfo {

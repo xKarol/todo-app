@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CrossIcon, CheckIcon } from "./Icons.js";
+import { TodoContext } from "./Provider.js";
+
 const TodoItem = ({ completed, text }) => {
+  const [todos, setTodo] = useContext(TodoContext);
+
   const completeTodo = () => {
     
-  }
+  };
   return (
     <>
       <li>
