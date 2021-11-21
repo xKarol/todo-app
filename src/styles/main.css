@@ -154,6 +154,7 @@ a {
   border: none;
   outline: none;
   padding: 20px 0;
+  background: transparent;
 }
 
 .container__input > input[type="text"]::-webkit-input-placeholder {
@@ -204,6 +205,11 @@ a {
           flex: 1;
   font-size: 16px;
   font-weight: 400;
+}
+
+.container__list__text.completed {
+  text-decoration: line-through;
+  color: #9394a5;
 }
 
 .container__list__info {

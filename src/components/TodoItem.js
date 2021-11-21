@@ -30,7 +30,7 @@ const TodoItem = ({ completed, text, id }) => {
             onChange={completeTodo}
           />
         </div>
-        <h1 className="container__list__text">{text}</h1>
+        <h1 className={`container__list__text ${completed && "completed"}`}>{text}</h1>
         <span onClick={deleteTodo}>
           <CrossIcon />
         </span>

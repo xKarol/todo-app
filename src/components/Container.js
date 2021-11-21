@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import { MoonIcon } from "./Icons.js";
+import { MoonIcon, SunIcon } from "./Icons.js";
 import TodoItem from "./TodoItem.js";
 import { TodoContext } from "./Provider.js";
 
-function Container() {
+function Container({ theme, setTheme }) {
   const [todos, setTodo] = useContext(TodoContext);
   const [todoName, setTodoName] = useState("");
   const [filter, setFilter] = useState(1);
@@ -24,7 +24,9 @@ function Container() {
       <section className="container">
         <header className="container__header">
           <span className="container__logo">TODO</span>
-          <MoonIcon />
+          <span onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+            {theme === "light" ? <MoonIcon /> : <SunIcon />}
+          </span>
         </header>
         <form className="container__input" onSubmit={(e) => addTodo(e)}>
           <input type="checkbox" disabled />
