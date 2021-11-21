@@ -11,6 +11,7 @@ function Container() {
   const addTodo = (e) => {
     e.preventDefault();
     setTodo((data) => [...data, { text: todoName, completed: false }]);
+    setTodoName("");
   };
 
   const clearCompleted = () => {
@@ -43,12 +44,8 @@ function Container() {
                 ? !data.completed
                 : data.completed
             )
-            .map((data, index) => (
-              <TodoItem
-                text={data.text}
-                completed={data.completed}
-                key={index}
-              />
+            .map(({ text, completed, id }) => (
+              <TodoItem text={text} completed={completed} id={id} key={id} />
             ))}
 
           <div className="container__list__info">

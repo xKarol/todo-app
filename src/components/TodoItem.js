@@ -2,11 +2,21 @@ import React, { useContext } from "react";
 import { CrossIcon, CheckIcon } from "./Icons.js";
 import { TodoContext } from "./Provider.js";
 
-const TodoItem = ({ completed, text }) => {
+const TodoItem = ({ completed, text, id }) => {
   const [todos, setTodo] = useContext(TodoContext);
 
   const completeTodo = () => {
-    
+    const newList = todos.map((data) =>
+      data.id === id ? { ...data, completed: !data.completed } : data
+    );
+    setTodo(newList);
+  };
+
+  const deleteTodo = () => {
+    console.log("x");
+    const newList = todos.filter((data) => data.id !== id);
+    console.log(newList);
+    setTodo(newList);
   };
   return (
     <>
@@ -21,7 +31,9 @@ const TodoItem = ({ completed, text }) => {
           />
         </div>
         <h1 className="container__list__text">{text}</h1>
-        <CrossIcon />
+        <span onClick={deleteTodo}>
+          <CrossIcon />
+        </span>
       </li>
     </>
   );

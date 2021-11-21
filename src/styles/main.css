@@ -244,6 +244,7 @@ a {
 
 .container__list__confirm > svg {
   z-index: 1;
+  pointer-events: none;
 }
 
 .container__sort {
