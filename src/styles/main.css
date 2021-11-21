@@ -6,12 +6,12 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
 }
 
 body {
-  font-family: "Josefin Sans", sans-serif;
   font-size: 18px;
-  font-weight: 400;
   min-height: 100vh;
 }
 
@@ -108,7 +108,6 @@ a {
 
 .container__input {
   border-radius: 5px;
-  overflow: hidden;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -118,13 +117,13 @@ a {
           align-items: center;
   margin-bottom: 15px;
   background-color: white;
-  padding: 20px;
+  padding: 15px 20px;
 }
 
 .container__input > input[type="checkbox"] {
   width: 20px;
   height: 20px;
-  margin-right: 20px;
+  margin-right: 15px;
   border: none;
   outline: none;
   -webkit-appearance: none;
@@ -153,7 +152,6 @@ a {
           flex: 1;
   border: none;
   outline: none;
-  padding: 20px 0;
   background: transparent;
 }
 
@@ -175,6 +173,7 @@ a {
 
 .container__list {
   width: 100%;
+  max-height: 50vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -186,6 +185,15 @@ a {
   list-style: none;
   border-radius: 5px;
   margin-bottom: 15px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.container__list::-webkit-scrollbar {
+  display: none;
 }
 
 .container__list > li {
@@ -197,6 +205,11 @@ a {
           align-items: center;
   border-bottom: 1px solid #e4e5f1;
   padding: 20px;
+}
+
+.container__list > li > span {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
 }
 
 .container__list__text {
@@ -213,6 +226,12 @@ a {
 }
 
 .container__list__info {
+  position: -webkit-sticky;
+  position: sticky;
+  width: 100%;
+  bottom: 0;
+  z-index: 1;
+  background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -235,7 +254,7 @@ a {
   position: relative;
   width: 20px;
   height: 20px;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .container__list__confirm > input,
@@ -284,7 +303,7 @@ a {
 
 .container__dragInfo {
   width: 100%;
-  height: 100%;
+  margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -299,7 +318,8 @@ a {
 .container__dragInfo > span {
   text-align: center;
   color: #9394a5;
-  font-weight: 700;
+  font-weight: 400;
+  font-size: 16px;
 }
 
 .container__confirm {

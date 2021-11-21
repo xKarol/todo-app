@@ -89,6 +89,7 @@ function Container({ theme, setTheme }) {
             .map(({ text, completed, id }) => (
               <TodoItem text={text} completed={completed} id={id} key={id} />
             ))}
+
           <div className="container__list__info">
             <span>
               {todos.filter((data) => !data.completed).length} items left

@@ -34,7 +34,7 @@ const TodoItem = ({ completed, text, id }) => {
             onChange={() => completeTodo(id)}
           />
         </div>
-        <h1 className={`container__list__text ${completed && "completed"}`}>
+        <h1 className={`container__list__text ${completed ? "completed" : ""}`}>
           {text}
         </h1>
         <span onClick={() => deleteTodo(id)}>

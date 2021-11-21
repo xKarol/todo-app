@@ -23,17 +23,16 @@
   }
   &__input {
     border-radius: 5px;
-    overflow: hidden;
     width: 100%;
     display: flex;
     align-items: center;
     margin-bottom: 15px;
     background-color: $white;
-    padding: 20px;
+    padding: 15px 20px;
     > input[type="checkbox"] {
       width: 20px;
       height: 20px;
-      margin-right: 20px;
+      margin-right: 15px;
       border: none;
       outline: none;
       appearance: none;
@@ -55,7 +54,6 @@
       flex: 1;
       border: none;
       outline: none;
-      padding: 20px 0;
       background: transparent;
       &::placeholder {
         color: $dark-grayish-blue;
@@ -64,17 +62,27 @@
   }
   &__list {
     width: 100%;
+    max-height: 50vh;
     display: flex;
     flex-direction: column;
     background-color: $white;
     list-style: none;
     border-radius: 5px;
     margin-bottom: 15px;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none;
+    }
     > li {
       display: flex;
       align-items: center;
       border-bottom: 1px solid $very-light-grayish-blue;
       padding: 20px;
+      > span {
+        transform: scale(0.8);
+      }
     }
     &__text {
       flex: 1;
@@ -86,6 +94,11 @@
       }
     }
     &__info {
+      position: sticky;
+      width: 100%;
+      bottom: 0;
+      z-index: 1;
+      background-color: $white;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -100,7 +113,7 @@
       position: relative;
       width: 20px;
       height: 20px;
-      margin-right: 20px;
+      margin-right: 15px;
       > input,
       svg {
         position: absolute;
@@ -136,14 +149,15 @@
   }
   &__dragInfo {
     width: 100%;
-    height: 100%;
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     > span {
       text-align: center;
       color: $dark-grayish-blue;
-      font-weight: 700;
+      font-weight: 400;
+      font-size: 16px;
     }
   }
   &__confirm {
