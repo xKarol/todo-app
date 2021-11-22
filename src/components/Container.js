@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { MoonIcon, SunIcon } from "./Icons.js";
 import TodoItem from "./TodoItem.js";
+import Loader from "./Loader.js";
 import { TodoContext } from "./Provider.js";
 import { db } from "../firebase";
 import {
@@ -17,6 +18,7 @@ function Container({ theme, setTheme }) {
   const [todos, setTodo] = useContext(TodoContext);
   const [todoName, setTodoName] = useState("");
   const [filter, setFilter] = useState(1);
+  const [loading, setLoading] = useState(false);
   const todosCollectionRef = collection(db, "todos");
 
   const addTodo = async (e) => {
@@ -31,14 +33,18 @@ function Container({ theme, setTheme }) {
         { id: item.id, text: todoName, completed: false },
         ...data,
       ]);
+      setLoading(false);
     };
     if (todoName) {
+      setLoading(true);
       databaseAdd();
       setTodoName("");
     }
   };
 
   const clearCompleted = async () => {
+    const newList = todos.filter((data) => !data.completed);
+    if (newList.length - todos.length >= 0) return;
     const todosRef = collection(db, "todos");
     const q = query(todosRef, where("completed", "==", true));
     const snapshot = await getDocs(q);
@@ -47,7 +53,6 @@ function Container({ theme, setTheme }) {
       const docRef = doc(db, "todos", result.id);
       await deleteDoc(docRef);
     });
-    const newList = todos.filter((data) => !data.completed);
     setTodo(newList);
   };
 
@@ -57,6 +62,7 @@ function Container({ theme, setTheme }) {
       setTodo(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -79,6 +85,7 @@ function Container({ theme, setTheme }) {
             value={todoName}
             onChange={(e) => setTodoName(e.target.value)}
           />
+          {loading && <Loader className="container__input__loader" />}
         </form>
         <ul className="container__list">
           {todos

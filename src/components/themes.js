@@ -1,5 +1,10 @@
 import { createGlobalStyle } from "styled-components";
-export const lightTheme = {};
+export const lightTheme = {
+  border: "hsl(236, 33%, 92%)",
+  borderDark: "hsl(234, 39%, 85%)",
+  backgroundMobile: "./images/bg-mobile-light.jpg",
+  backgroundDesktop: "./images/bg-desktop-light.jpg",
+};
 
 export const darkTheme = {
   darkBackground: "hsl(235, 21%, 11%)",
@@ -8,25 +13,18 @@ export const darkTheme = {
   fontDark: "hsl(233, 14%, 35%)",
   fontLight: "hsl(236, 33%, 92%)",
   border: "hsl(237, 14%, 26%)",
-
-  // - Very Dark Blue: hsl(235, 21%, 11%)
-  // - Light Grayish Blue: hsl(234, 39%, 85%)
-
-  // - Dark Grayish Blue: hsl(234, 11%, 52%)
-
-  // - Very Dark Desaturated Blue: hsl(235, 24%, 19%)
-  // - Light Grayish Blue (hover): hsl(236, 33%, 92%)
-  // - Very Dark Grayish Blue: hsl(233, 14%, 35%)
-  // - Very Dark Grayish Blue: hsl(237, 14%, 26%)
+  borderDark: "hsl(237, 14%, 36%)",
+  backgroundMobile: "./images/bg-mobile-dark.jpg",
+  backgroundDesktop: "./images/bg-desktop-dark.jpg",
 };
 
 export const GlobalStyles = createGlobalStyle`
     .background{
         background-color: ${(props) => props.theme.darkBackground};
         &::before {
-            /* background-image: url("./images/bg-mobile-dark.jpg"); */
+            background-image: url(${(props) => props.theme.backgroundMobile});
             @media (min-width: 640px) {
-                /* background-image: url(".images/bg-desktop-dark.jpg"); */
+                background-image: url(${(props) => props.theme.backgroundDesktop});
             }
         }
     }
@@ -73,6 +71,10 @@ export const GlobalStyles = createGlobalStyle`
                 &::before {
                     border-color: ${(props) => props.theme.border};
                 }
+            }
+            &__loader{
+                border-color: ${(props) => props.theme.border};
+                border-top-color: ${(props) => props.theme.borderDark};
             }
         }
         &__dragInfo{

@@ -49,18 +49,11 @@ a {
 .background::before {
   content: "";
   position: absolute;
-  background-image: url("./images/bg-mobile-light.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   min-height: 200px;
   background-color: #eee;
-}
-
-@media (min-width: 640px) {
-  .background::before {
-    background-image: url("./images/bg-desktop-light.jpg");
-  }
 }
 
 .container {
@@ -177,6 +170,11 @@ a {
 
 .container__input > input[type="text"]::placeholder {
   color: #9394a5;
+}
+
+.container__input__loader {
+  position: absolute;
+  right: 20px;
 }
 
 .container__list {

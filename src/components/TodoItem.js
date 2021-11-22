@@ -6,7 +6,6 @@ import { doc, updateDoc, deleteDoc } from "firebase/firestore";
 
 const TodoItem = ({ completed, text, id }) => {
   const [todos, setTodo] = useContext(TodoContext);
-
   const completeTodo = async (id) => {
     const todoDoc = doc(db, "todos", id);
     await updateDoc(todoDoc, { completed: !completed });
@@ -22,6 +21,7 @@ const TodoItem = ({ completed, text, id }) => {
     const newList = todos.filter((data) => data.id !== id);
     setTodo(newList);
   };
+
   return (
     <>
       <li>
@@ -37,7 +37,10 @@ const TodoItem = ({ completed, text, id }) => {
         <h1 className={`container__list__text ${completed ? "completed" : ""}`}>
           {text}
         </h1>
-        <span className="container__list__delete" onClick={() => deleteTodo(id)}>
+        <span
+          className="container__list__delete"
+          onClick={() => deleteTodo(id)}
+        >
           <CrossIcon />
         </span>
       </li>

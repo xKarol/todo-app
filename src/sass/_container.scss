@@ -68,6 +68,10 @@
         color: $dark-grayish-blue;
       }
     }
+    &__loader {
+      position: absolute;
+      right: 20px;
+    }
   }
   &__list {
     max-width: $max-width;
