@@ -53,6 +53,7 @@ export const GlobalStyles = createGlobalStyle`
         }
         &__confirm{
             &::before {
+                transition: none;
                 border-color: ${(props) => props.theme.border};
             }
         }
