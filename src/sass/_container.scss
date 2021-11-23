@@ -181,6 +181,9 @@
       &:hover {
         color: $very-dark-grayish-blue;
       }
+      &:active {
+        color: $dark-grayish-blue;
+      }
       @include breakpoint-up(medium) {
         font-size: 14px;
       }

@@ -345,6 +345,10 @@ a {
   color: #484b6a;
 }
 
+.container__sort > span:active {
+  color: #9394a5;
+}
+
 @media (min-width: 640px) {
   .container__sort > span {
     font-size: 14px;
