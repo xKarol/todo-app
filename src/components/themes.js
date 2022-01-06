@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+
 export const lightTheme = {
   border: "hsl(236, 33%, 92%)",
   borderDark: "hsl(234, 39%, 85%)",

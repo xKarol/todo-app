@@ -1,15 +1,8 @@
-import React from "react";
 import styled, { keyframes } from "styled-components";
 
-const Loader = (props) => {
-  return (
-    <>
-      <Loading {...props} />
-    </>
-  );
-};
-
-export default Loader;
+export default function Loader(props) {
+  return <Loading {...props} />;
+}
 
 const spin = keyframes`
   0% {transform: rotate(0deg);}

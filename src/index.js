@@ -2,13 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/main.css";
 import App from "./App";
-import TodoProvider from "./components/Provider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <TodoProvider>
-      <App />
-    </TodoProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
