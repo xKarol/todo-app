@@ -5,8 +5,9 @@ import Layout from "./components/Layout.js";
 import Todo from "./components/index.js";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "light");
   const changeTheme = (name) => {
+    localStorage.setItem("theme", name);
     setTheme(name);
   };
   return (
