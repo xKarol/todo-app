@@ -1,0 +1,18 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  border: 0.25rem solid rgba($very-dark-grayish-blue, 0.2);
+  border-top-color: $dark-grayish-blue;
+  animation: spin 1s infinite linear;
+  pointer-events: none;
+}

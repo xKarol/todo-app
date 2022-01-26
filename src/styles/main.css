@@ -54,6 +54,13 @@ a {
   width: 100%;
   min-height: 200px;
   background-color: #eee;
+  background-image: url("./images/bg-mobile-light.jpg");
+}
+
+@media (min-width: 640px) {
+  .background::before {
+    background-image: url("./images/bg-desktop-light.jpg");
+  }
 }
 
 .container {
@@ -439,5 +446,116 @@ a {
 
 .container__theme {
   cursor: pointer;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.loader {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  border: 0.25rem solid rgba(72, 75, 106, 0.2);
+  border-top-color: #9394a5;
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear;
+  pointer-events: none;
+}
+
+.theme.dark .background {
+  background-color: #161722;
+}
+
+.theme.dark .background::before {
+  background-image: url("./images/bg-mobile-dark.jpg");
+}
+
+@media (min-width: 640px) {
+  .theme.dark .background::before {
+    background-image: url("./images/bg-desktop-dark.jpg");
+  }
+}
+
+.theme.dark .container__input {
+  background-color: #25273c;
+}
+
+.theme.dark .container__list {
+  background-color: #25273c;
+  color: #cacde8;
+}
+
+.theme.dark .container__list > li {
+  border-color: #393a4c;
+}
+
+.theme.dark .container__list__info {
+  background-color: #25273c;
+}
+
+.theme.dark .container__list__info > span:nth-child(2):hover {
+  color: #e4e5f1;
+}
+
+.theme.dark .container__confirm::before {
+  -webkit-transition: none;
+  transition: none;
+  border-color: #393a4c;
+}
+
+.theme.dark .container__sort {
+  background-color: #25273c;
+}
+
+.theme.dark .container__sort > span:hover {
+  color: #e4e5f1;
+}
+
+.theme.dark .container__input > input[type="text"] {
+  color: #cacde8;
+}
+
+.theme.dark .container__input > input[type="checkbox"]::before {
+  border-color: #393a4c;
+}
+
+.theme.dark .container__input__loader {
+  border-color: #393a4c;
+  border-top-color: #4f5069;
+}
+
+.theme.dark .container__dragInfo {
+  color: #4d5066;
+}
+
+.theme.dark .container__dragInfo > span {
+  color: #4d5066;
+}
+
+.theme.dark .author {
+  color: #4d5066;
+}
+
+.theme.dark .author > a {
+  color: #4d5066;
 }
 /*# sourceMappingURL=main.css.map */

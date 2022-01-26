@@ -12,5 +12,9 @@
     width: 100%;
     min-height: 200px;
     background-color: #eee;
+    background-image: url("./images/bg-mobile-light.jpg");
+    @media (min-width: 640px) {
+      background-image: url("./images/bg-desktop-light.jpg");
+    }
   }
 }

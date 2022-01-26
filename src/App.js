@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme, GlobalStyles } from "./components/themes.js";
 import Layout from "./components/Layout.js";
 import Todo from "./components/index.js";
 
@@ -11,11 +9,10 @@ function App() {
     setTheme(name);
   };
   return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      <GlobalStyles />
+    <div className={`theme ${theme === "light" ? "light" : "dark"}`}>
       <Layout />
       <Todo theme={theme} changeTheme={changeTheme} />
-    </ThemeProvider>
+    </div>
   );
 }
 

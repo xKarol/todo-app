@@ -1,0 +1,83 @@
+$darkBackground: hsl(235, 21%, 11%);
+$background: hsl(235, 24%, 19%);
+$font: hsl(234, 39%, 85%);
+$fontDark: hsl(233, 14%, 35%);
+$fontLight: hsl(236, 33%, 92%);
+$border: hsl(237, 14%, 26%);
+$borderDark: hsl(237, 14%, 36%);
+$backgroundMobile: "./images/bg-mobile-dark.jpg";
+$backgroundDesktop: "./images/bg-desktop-dark.jpg";
+
+.theme.dark {
+  .background {
+    background-color: $darkBackground;
+    &::before {
+      background-image: url($backgroundMobile);
+      @media (min-width: 640px) {
+        background-image: url($backgroundDesktop);
+      }
+    }
+  }
+  .container {
+    &__input {
+      background-color: $background;
+    }
+    &__list {
+      background-color: $background;
+      color: $font;
+      > li {
+        border-color: $border;
+      }
+      &__info {
+        background-color: $background;
+        > span {
+          &:nth-child(2) {
+            &:hover {
+              color: $fontLight;
+            }
+          }
+        }
+      }
+    }
+    &__confirm {
+      &::before {
+        transition: none;
+        border-color: $border;
+      }
+    }
+    &__sort {
+      background-color: $background;
+      > span {
+        &:hover {
+          color: $fontLight;
+        }
+      }
+    }
+    &__input {
+      > input[type="text"] {
+        color: $font;
+      }
+      > input[type="checkbox"] {
+        &::before {
+          border-color: $border;
+        }
+      }
+      &__loader {
+        border-color: $border;
+        border-top-color: $borderDark;
+      }
+    }
+    &__dragInfo {
+      color: $fontDark;
+      > span {
+        color: $fontDark;
+      }
+    }
+  }
+  .author {
+    color: $fontDark;
+    > a {
+      color: $fontDark;
+    }
+  }
+}

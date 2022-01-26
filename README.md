@@ -1,4 +1,7 @@
-### TODO APP
+# TODO APP
+A Todo App made with React JS and firebase 
+
+
 - REACT JS
 - SASS
 - Firebase
