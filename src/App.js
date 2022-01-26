@@ -1,19 +1,22 @@
 import { useState } from "react";
-import Layout from "./components/Layout.js";
+import Background from "./components/Background.js";
 import Todo from "./components/index.js";
+import ThemeContext from "./context/ThemeContext";
 
-function App() {
+export default function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "light");
   const changeTheme = (name) => {
     localStorage.setItem("theme", name);
     setTheme(name);
   };
+
   return (
-    <div className={`theme ${theme === "light" ? "light" : "dark"}`}>
-      <Layout />
-      <Todo theme={theme} changeTheme={changeTheme} />
-    </div>
+    <ThemeContext.Provider value={{ theme, changeTheme }}>
+      <div className={`theme-${theme === "light" ? "light" : "dark"}`}>
+        <Background>
+          <Todo />
+        </Background>
+      </div>
+    </ThemeContext.Provider>
   );
 }
-
-export default App;

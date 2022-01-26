@@ -1,7 +1,10 @@
 import { FaMoon } from "react-icons/fa";
 import { BsFillSunFill } from "react-icons/bs";
+import { useContext } from "react";
+import ThemeContext from "../context/ThemeContext";
 
-export default function Header({ changeTheme, theme }) {
+export default function Header() {
+  const { changeTheme, theme } = useContext(ThemeContext);
   return (
     <header className="container__header">
       <span className="container__logo">TODO</span>

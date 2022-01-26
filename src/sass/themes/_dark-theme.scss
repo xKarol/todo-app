@@ -8,7 +8,7 @@ $borderDark: hsl(237, 14%, 36%);
 $backgroundMobile: "./images/bg-mobile-dark.jpg";
 $backgroundDesktop: "./images/bg-desktop-dark.jpg";
 
-.theme.dark {
+.theme-dark {
   .background {
     background-color: $darkBackground;
     &::before {
@@ -36,6 +36,14 @@ $backgroundDesktop: "./images/bg-desktop-dark.jpg";
               color: $fontLight;
             }
           }
+        }
+      }
+    }
+    &__filter {
+      @include breakpoint-down(small) {
+        background-color: $background;
+        > span:hover {
+          color: $white;
         }
       }
     }

@@ -7,14 +7,14 @@ import TodosList from "./TodosList";
 import Filter from "./Filter";
 import { FILTER_ALL } from "../constants/filter";
 
-export default function Todo({ theme, changeTheme }) {
+export default function Todo() {
   const [filter, setFilter] = useState(FILTER_ALL);
   const { todos, setTodos } = useTodos();
 
   return (
     <TodoContext.Provider value={{ todos, setTodos, setFilter, filter }}>
       <section className="container">
-        <Header theme={theme} changeTheme={changeTheme} />
+        <Header />
         <AddTodo />
         <TodosList />
         <Filter />

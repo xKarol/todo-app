@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  z-index: 50;
   &__header {
     display: flex;
     justify-content: space-between;
@@ -13,6 +14,7 @@
     width: 100%;
     margin-bottom: 35px;
     max-width: $max-width;
+    z-index: 50;
   }
   &__logo {
     text-transform: uppercase;
@@ -87,6 +89,7 @@
     overflow-y: scroll;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+    z-index: 50;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -170,12 +173,12 @@
     background-color: $white;
     border-radius: 5px;
     padding: 20px;
+    z-index: 50;
     @include breakpoint-up(medium) {
       width: max-content;
       background-color: transparent;
       margin-top: -67px;
       height: 52px;
-      z-index: 1;
     }
     > span {
       color: $dark-grayish-blue;
