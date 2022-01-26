@@ -11,7 +11,7 @@ $backgroundDesktop: "./images/bg-desktop-dark.jpg";
 .theme-dark {
   .background {
     background-color: $darkBackground;
-    &::before {
+    > .image {
       background-image: url($backgroundMobile);
       @media (min-width: 640px) {
         background-image: url($backgroundDesktop);
@@ -38,6 +38,9 @@ $backgroundDesktop: "./images/bg-desktop-dark.jpg";
           }
         }
       }
+      &__confirm::before {
+        border-color: $border;
+      }
     }
     &__filter {
       @include breakpoint-down(small) {
@@ -45,12 +48,6 @@ $backgroundDesktop: "./images/bg-desktop-dark.jpg";
         > span:hover {
           color: $white;
         }
-      }
-    }
-    &__confirm {
-      &::before {
-        transition: none;
-        border-color: $border;
       }
     }
     &__sort {

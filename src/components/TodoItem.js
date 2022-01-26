@@ -27,25 +27,19 @@ export default function TodoItem({ data: { completed, text, id } }) {
   };
 
   return (
-    <>
-      <li className={`${pending ? "container__list__pending" : undefined}`}>
-        <div className="container__list__confirm">
-          {completed && <CheckIcon />}
-          <input
-            type="checkbox"
-            className="container__confirm"
-            checked={completed}
-            value={completed}
-            onChange={handleComplete}
-          />
-        </div>
-        <h1 className={`container__list__text ${completed ? "completed" : ""}`}>
-          {text}
-        </h1>
-        <span className="container__list__delete" onClick={handleDelete}>
-          <CrossIcon />
-        </span>
-      </li>
-    </>
+    <li className={`${pending ? "container__list__pending" : undefined}`}>
+      <div
+        className={`container__list__confirm ${completed ? "active" : null}`}
+        onClick={handleComplete}
+      >
+        {completed && <CheckIcon />}
+      </div>
+      <h1 className={`container__list__text ${completed ? "completed" : ""}`}>
+        {text}
+      </h1>
+      <span className="container__list__delete" onClick={handleDelete}>
+        <CrossIcon />
+      </span>
+    </li>
   );
 }
